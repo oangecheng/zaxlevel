@@ -15,6 +15,10 @@ local ZxDapperness = Class(function(self, inst)
     self.inst = inst
     self.dapperness = 0
     self.dappernessunlock = false
+
+    if self.inst.components.equippable ~= nil then
+        self.dapperness = inst.components.equippable.dapperness
+    end
 end)
 
 
@@ -36,7 +40,6 @@ function ZxDapperness:GiveItem(giver, item)
     local prefab = item.prefab
     if prefab == UNLOCK_ITEM then
         self.dappernessunlock = true
-        self.inst.components.equippable.dapperness = 0
         giver.components.talker:Say("现在可以使用海象帽提升精神恢复了！")
     elseif prefab == UPGRADE_ITEM then
         local success = true
@@ -46,8 +49,8 @@ function ZxDapperness:GiveItem(giver, item)
             end
         end
         if success then
-            self.dapperness = self.dapperness + 1
-            self.inst.components.equippable.dapperness = self.dapperness * DAPPERNESS_MED
+            self.dapperness = self.dapperness + DAPPERNESS_RATIO
+            self.inst.components.equippable.dapperness = self.dapperness
         else
             giver.components.talker:Say("运气不好，失败了...")
         end
@@ -69,7 +72,7 @@ function ZxDapperness:OnLoad(data)
     self.dappernessunlock = data.dappernessunlock or false
 
     if self.dappernessunlock and self.inst.components.equippable ~= nil then
-        inst.components.equippable.dapperness = self.dapperness * DAPPERNESS_RATIO
+        self.inst.components.equippable.dapperness = self.dapperness
     end
 end
 

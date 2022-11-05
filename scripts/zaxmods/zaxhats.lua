@@ -35,7 +35,7 @@ end
 
 
 if GLOBAL.TheNet:GetIsServer() then
-    AddPrefabPostInit("eyebrellahat", function(inst)
+    AddPrefabPostInit("walrushat", function(inst)
         inst:AddComponent("trader")
         inst:AddComponent("zxinsulator")
         inst:AddComponent("zxdapperness")

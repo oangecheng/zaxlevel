@@ -105,7 +105,7 @@ local function onEatFood(inst, data)
     local target = findFood(inst, data)
     if target ~= nil then
         local foodExp = target[2]
-        inst.components.talker:CancelSay()
+        inst.components.talker:ShutUp()
         inst.components.talker:Say("味道好极了! 经验 +"..foodExp)
         onGetExp(inst, foodExp)
     end

@@ -1,11 +1,11 @@
 -- 名称
 name = "Zax Level Up"
 -- 描述
-description = "level up role and item! 0.1.11"
+description = "level up role and item! 0.2.1"
 -- 作者
 author = "Zax"
 -- 版本
-version = "0.1.11"
+version = "0.2.1"
 -- klei官方论坛地址，为空则默认是工坊的地址
 forumthread = ""
 -- modicon 下一篇再介绍怎么创建的
