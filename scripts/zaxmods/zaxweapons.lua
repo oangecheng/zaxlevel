@@ -71,6 +71,12 @@ local function itemTradeTest(inst, item)
 		end
 	end
 
+	if inst.components.zxwork ~= nil then
+		if inst.components.zxwork:AccpeptTest(item) then
+			return true
+		end
+	end
+
 	return false
 end
 
@@ -116,6 +122,10 @@ local function onItemGiven(inst, giver, item)
 		zxweapon:RecoverUses(uses)
 	end
 
+	if inst.components.zxwork ~= nil then
+		inst.components.zxwork:GiveItem(giver, item)
+	end
+
 	giver.SoundEmitter:PlaySound("dontstarve/common/telebase_gemplace")
 end
 
@@ -126,6 +136,7 @@ if GLOBAL.TheNet:GetIsServer() then
 	AddPrefabPostInit("spear_wathgrithr", function(inst) 
 		inst:AddComponent("zxweapon")
 		inst:AddComponent("trader")
+		inst:AddComponent("zxwork")
 	
 		inst.components.trader:SetAbleToAcceptTest(itemTradeTest)
 		inst.components.trader.onaccept = onItemGiven
