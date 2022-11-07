@@ -15,8 +15,10 @@ local ZxWaterProofer = Class(function(self, inst)
     -- 没有防水组件，添加
     if inst.components.waterproofer == nil then
         inst:AddComponent("waterproofer")
+        inst.components.waterproofer:SetEffectiveness(0)
+    else
+        self.waterproofer = inst.components.waterproofer:GetEffectiveness()
     end
-
 end)
 
 
@@ -26,7 +28,7 @@ function ZxWaterProofer:AcceptTest(item)
         if prefab == UNLOCK_ITEM  then
             return true
         end
-    elseif prefab == UPGRADE_ITEM then
+    elseif prefab == UPGRADE_ITEM and self.waterproofer < 1 then
         return true
     end
     return false
@@ -35,20 +37,22 @@ end
 
 function ZxWaterProofer:GiveItem(giver, item)
     local prefab = item.prefab
+    -- 解锁防水
     if prefab == UNLOCK_ITEM then
         self.waterprooferunlock = true
-        self.inst.components.waterproofer:SetEffectiveness(0)
         giver.components.talker:Say("现在可以使用猪皮升级防水了！")
+    -- 猪皮升级
     elseif prefab == UPGRADE_ITEM then
         local success = true
+        -- 开启概率升级，等级越高概率越低
         if TUNING.useUpgradePolicy then 
-            if math.random(1, math.max(2, self.waterproofer)) > 60 then
+            if math.random(1, math.max(2, self.waterproofer * 100)) > 60 then
                 success = false
             end
         end
         if success then
-            self.waterproofer = self.waterproofer + 1
-            self.inst.components.waterproofer:SetEffectiveness(getEffectiveness(self.waterproofer)) 
+            self.waterproofer = self.waterproofer + 0.01
+            self.inst.components.waterproofer:SetEffectiveness(self.waterproofer) 
         else
             giver.components.talker:Say("这猪皮质量不太行...")
         end
@@ -69,7 +73,7 @@ function ZxWaterProofer:OnLoad(data)
     self.waterprooferunlock = data.waterprooferunlock
 
     if self.waterprooferunlock then
-        self.inst.components.waterproofer:SetEffectiveness(getEffectiveness(self.waterproofer))
+        self.inst.components.waterproofer:SetEffectiveness(self.waterproofer)
     end
 end
 
