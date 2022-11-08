@@ -28,7 +28,7 @@ function moreItemDrop(inst, data)
 
         if victim.components.health ~= nil then
             local maxHealth = math.ceil(victim.components.health.maxhealth)
-            if not maxHealth < 1000 then
+            if maxHealth >= 1000 then
                 inst.components.zxmoredrop:OnLevelUp()
             end
         end
