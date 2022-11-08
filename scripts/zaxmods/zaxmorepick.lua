@@ -47,7 +47,7 @@ local function calculatePickMulti(inst)
     local zrolelevel = inst.components.rolelevel
     -- 没有等级，30%概率双倍采集
     if zrolelevel == nil then
-        if math.random( 1 , 100) <= 30 then
+        if math.random() < 0.3 then
             return 2
         else
             return 1

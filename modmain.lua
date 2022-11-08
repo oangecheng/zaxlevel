@@ -20,6 +20,7 @@ TUNING.useUpgradePolicy = useUpgradePolicy
 
 if useMorePick then
 	modimport("scripts/zaxmods/zaxmorepick.lua")
+	modimport("scripts/zaxmods/zaxharvest.lua")
 end
 
 if useWeaponLevelUp then
@@ -27,7 +28,6 @@ if useWeaponLevelUp then
 end
 
 modimport("scripts/zaxmods/zaxhats.lua")
-
 
 
 if GLOBAL.TheNet:GetIsServer() then
@@ -49,18 +49,13 @@ if GLOBAL.TheNet:GetIsServer() then
 			inst:AddComponent("rolestrenth")
 		end
 
+		if useMorePick then 
+			inst:AddComponent("zxfarmskill")
+		end
 
 		inst.components.talker:Say("我又来到这个奇怪的世界！")
 
 	end)
-
-	-- 和勋章联动
-	-- AddPrefabPostInit("largechop_certificate", function(inst)
-	-- 	inst:AddComponent("edibal")
-	-- end)
-	-- AddPrefabPostInit("largeminer_certificate", function(inst)
-	-- 	inst:AddComponent("edibal")
-	-- end)
 end
 
 
