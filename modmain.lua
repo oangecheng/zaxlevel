@@ -41,7 +41,7 @@ if GLOBAL.TheNet:GetIsServer() then
 
 		-- 额外掉落
 		if useMoreDrop then 
-			inst:AddComponent("extradrop")
+			inst:AddComponent("zxmoredrop")
 		end
 
 		-- 角色强化
