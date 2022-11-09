@@ -1,88 +1,113 @@
+local Ch = locale == "zh" or locale == "zhr"
+
+
 -- 名称
 name = "Zax Level Up"
 -- 描述
-description = "level up role and item! 0.2.1"
--- 作者
+description = 
+ch and 
+[[
+你可以升级你的角色和物品，
+可以通过战斗击杀对方获得经验，
+可以吃下美味的食物获取经验，
+可以通过给予物品升级女武神的长矛和普通长矛，
+可以通过给予物品升级海象帽，
+以上选项都可以通过设置自行选择开启还是关闭
+提醒: mod 角色如果自带升级不一定兼容哦！
+]]
+or 
+[[
+You can upgrade your characters and items.
+You can gain experience by killing opponents in battle.
+You can eat delicious food to gain experience.
+Wathgrithr spears and normal spears can be upgraded by giving items.
+Walrushat and eyebrellahat can be upgraded by giving items.
+All of the above options can be turned on or off through the settings.
+Reminder: mod characters may not be compatible with their own upgrades!
+]]
+
+
 author = "Zax"
--- 版本
 version = "0.2.1"
--- klei官方论坛地址，为空则默认是工坊的地址
 forumthread = ""
--- modicon 下一篇再介绍怎么创建的
--- icon_atlas = "images/modicon.xml"
--- icon = "images/modicon.tex"
 icon_atlas = "modicon.xml"
 icon = "modicon.tex"
--- dst兼容
 dst_compatible = true
--- 是否是客户端mod
 client_only_mod = false
--- 是否是所有客户端都需要安装
 all_clients_require_mod = true
--- 饥荒api版本，固定填10
 api_version = 10
 
--- mod的配置项，后面介绍
-configuration_options = {
-	{
-		name = "UseUpgradePolicy",
-		label = "物品升级概率成功",
-		options = {
-			{description = "开启", data = true},
-			{description = "关闭", data = false},
-		},
-		default = false,
-	},
+
+configuration_options = 
+{
 
 	{
 		name = "UseRoleLevelUp",
-		label = "角色升级",
+		label = ch and "角色升级" or "upgrade character",
 		options = {
-			{description = "开启", data = true},
-			{description = "关闭", data = false},
+			{description = ch and "开启" or "enable", data = true},
+			{description = ch and "关闭" or "disable", data = false},
 		},
-		default = false,
+		default = true,
 	},
 
 	{
 		name = "UseMorePick",
-		label = "多倍采集",
+		label = ch and "多倍采集" or "more pick",
 		options = {
-			{description = "开启", data = true},
-			{description = "关闭", data = false},
+			{description = ch and "开启" or "enable", data = true},
+			{description = ch and "关闭" or "disable", data = false},
 		},
-		default = false,
+		default = true,
 	},
 
 	{
 		name = "UseMoreDrop",
-		label = "额外掉落",
+		label = ch and "额外掉落" or "more item drop",
 		options = {
-			{description = "开启", data = true},
-			{description = "关闭", data = false},
+			{description = ch and "开启" or "enable", data = true},
+			{description = ch and "关闭" or "disable", data = false},
 		},
-		default = false,
+		default = true,
 	},
 
 	{
 		name = "UseRoleStrenth",
-		label = "人物强化",
+		label = ch and "人物强化" or "strengthen character",
 		options = {
-			{description = "开启", data = true},
-			{description = "关闭", data = false},
+			{description = ch and "开启" or "enable", data = true},
+			{description = ch and "关闭" or "disable", data = false},
 		},
-		default = false,
+		default = true,
 	},
 
 	{
 		name = "UseWeaponLevelUp",
-		label = "战斗长矛可升级",
+		label = ch and "长矛/战斗长矛可升级" or "upgrade weapon" ,
 		options = {
-			{description = "开启", data = true},
-			{description = "关闭", data = false},
+			{description = ch and "开启" or "enable", data = true},
+			{description = ch and "关闭" or "disable", data = false},
+		},
+		default = true,
+	},
+
+	{
+		name = "UseHatslLevelUp",
+		label = ch and "帽子可升级" or "upgrade hats" ,
+		options = {
+			{description = ch and "开启" or "enable", data = true},
+			{description = ch and "关闭" or "disable", data = false},
+		},
+		default = true,
+	},
+
+	{
+		name = "UseUpgradePolicy",
+		label = ch and "物品概率升级" or "item random upgrade",
+		options = {
+			{description = ch and "开启" or "enable", data = true},
+			{description = ch and "关闭" or "disable", data = false},
 		},
 		default = false,
 	},
-
-	
-}
+} 

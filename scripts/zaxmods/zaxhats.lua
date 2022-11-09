@@ -6,6 +6,11 @@ local TRADDABLE_ITEM_DEFS = {
     "townportaltalisman",
 }
 
+local HAT_DEFS = {
+    "walrushat", --海象帽
+    "eyebrellahat", --眼球伞
+}
+
 -- 给所有物品添加 tradable 组件
 if GLOBAL.TheNet:GetIsServer() then
 	local items = TRADDABLE_ITEM_DEFS
@@ -20,6 +25,7 @@ if GLOBAL.TheNet:GetIsServer() then
 end
 
 
+-- check item
 local function acceptTest(inst, item, giver)
     return inst.components.zxinsulator:AcceptTest(inst, item, giver) 
         or inst.components.zxdapperness:AcceptTest(item)
@@ -27,6 +33,7 @@ local function acceptTest(inst, item, giver)
 end
 
 
+-- give item
 local function onItemGiven(inst, giver, item)
    inst.components.zxinsulator:GiveItem(inst, giver, item)
    inst.components.zxdapperness:GiveItem(giver, item)
@@ -34,14 +41,20 @@ local function onItemGiven(inst, giver, item)
 end
 
 
+-- add zx components
+local function initHat(inst)
+    inst:AddComponent("trader")
+    inst:AddComponent("zxinsulator")
+    inst:AddComponent("zxdapperness")
+    inst:AddComponent("zxwaterproofer")
+    inst.components.trader:SetAbleToAcceptTest(acceptTest)
+    inst.components.trader.onaccept = onItemGiven
+end
+
+
 if GLOBAL.TheNet:GetIsServer() then
-    AddPrefabPostInit("walrushat", function(inst)
-        inst:AddComponent("trader")
-        inst:AddComponent("zxinsulator")
-        inst:AddComponent("zxdapperness")
-        inst:AddComponent("zxwaterproofer")
-        inst.components.trader:SetAbleToAcceptTest(acceptTest)
-        inst.components.trader.onaccept = onItemGiven
-    end)
+    for i=1, #HAT_DEFS do
+        AddPrefabPostInit(HAT_DEFS[i], initHat)  
+    end
 
 end

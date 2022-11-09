@@ -20,6 +20,12 @@ USES_ITEM_DEFS = {
 }
 
 
+local WEAPON_DEFS = {
+	"spear",
+	"spear_wathgrithr",
+}
+
+
 -- 所有物品
 ALL_ITEMS = {} 
 for i=1, #DAMAGE_ITEM_DEFS do
@@ -130,18 +136,22 @@ local function onItemGiven(inst, giver, item)
 end
 
 
+-- 初始化物品，添加组件
+local function initWeapon(inst)
+	inst:AddComponent("trader")
+	inst:AddComponent("zxweapon")
+	inst:AddComponent("zxwork")
+
+	inst.components.trader:SetAbleToAcceptTest(itemTradeTest)
+	inst.components.trader.onaccept = onItemGiven
+end
+
+
 -- 给战斗长矛添加可升级组件
 if GLOBAL.TheNet:GetIsServer() then
-
-	AddPrefabPostInit("spear_wathgrithr", function(inst) 
-		inst:AddComponent("zxweapon")
-		inst:AddComponent("trader")
-		inst:AddComponent("zxwork")
-	
-		inst.components.trader:SetAbleToAcceptTest(itemTradeTest)
-		inst.components.trader.onaccept = onItemGiven
-	end)
-
+	for i=1, #WEAPON_DEFS do
+		AddPrefabPostInit(WEAPON_DEFS[i], initWeapon)
+	end
 end
 
 
