@@ -13,6 +13,8 @@ local TRADDABLE_ITEM_DEFS = {
 }
 
 
+
+
 -- 给所有物品添加 tradable 组件
 if GLOBAL.TheNet:GetIsServer() then
 	local items = TRADDABLE_ITEM_DEFS
@@ -27,13 +29,16 @@ if GLOBAL.TheNet:GetIsServer() then
 end
 
 
+
 -- 初始化物品，添加组件
 local function initWeapon(inst)
 	inst:AddComponent("zxtrader")
 	inst:AddComponent("zxwork")
 	inst:AddComponent("zxspeed")
 	inst:AddComponent("zxfiniteuses")
+	inst:AddComponent("zxaoe")
 end
+
 
 
 -- 给战斗长矛添加可升级组件
