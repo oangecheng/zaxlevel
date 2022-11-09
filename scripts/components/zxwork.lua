@@ -5,22 +5,11 @@ local MAX_CHOP_MULTI = 15
 local MAX_MINE_MULTI = 10
 
 
--- local function updateWork(inst, zxwork)
---     if zxwork ~= nil then
---         inst.components.workmultiplier:AddMultiplier(ACTIONS.CHOP, zxwork.chopmulti, zxwork)
---         inst.components.workmultiplier:AddMultiplier(ACTIONS.MINE, zxwork.minemulti, zxwork)
---     end
--- end
-
-
 local ZxWork = Class(function(self, inst)
     self.inst = inst
-    self.chopmulti = 1
-    self.minemulti = 1
-
+    self.chopmulti = 0
+    self.minemulti = 0
     inst:AddComponent("tool")
-    inst.components.tool:SetAction(ACTIONS.CHOP, self.chopmulti)
-    inst.components.tool:SetAction(ACTIONS.MINE, self.minemulti)
 end)
 
 
@@ -62,8 +51,12 @@ function ZxWork:OnLoad(data)
     self.chopmulti = data.chopmulti or 1
     self.minemulti = data.minemulti or 1
     if inst.components.tool ~= nil then
-        inst.components.tool:SetAction(ACTIONS.CHOP, self.chopmulti)
-        inst.components.tool:SetAction(ACTIONS.MINE, self.minemulti)
+        if self.chopmulti > 0 then
+            inst.components.tool:SetAction(ACTIONS.CHOP, self.chopmulti)
+        end
+        if self.minemulti > 0 then
+            inst.components.tool:SetAction(ACTIONS.MINE, self.minemulti)
+        end
     end
 end
 

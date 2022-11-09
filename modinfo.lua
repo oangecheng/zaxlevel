@@ -21,7 +21,7 @@ You can upgrade your characters and items.
 You can gain experience by killing opponents in battle.
 You can eat delicious food to gain experience.
 Wathgrithr spears and normal spears can be upgraded by giving items.
-Walrushat and eyebrellahat can be upgraded by giving items.
+Walrushat can be upgraded by giving items.
 All of the above options can be turned on or off through the settings.
 Reminder: mod characters may not be compatible with their own upgrades!
 ]]

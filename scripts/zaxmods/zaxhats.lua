@@ -8,7 +8,6 @@ local TRADDABLE_ITEM_DEFS = {
 
 local HAT_DEFS = {
     "walrushat", --海象帽
-    "eyebrellahat", --眼球伞
 }
 
 -- 给所有物品添加 tradable 组件

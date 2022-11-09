@@ -42,11 +42,10 @@ PICKABLE_DEFS = {
 -- 多倍采集组件
 -- 支持给可采集的物品添加多倍采集功能
 -- 不支持农场
-
 local function calculatePickMulti(inst)
-    local zrolelevel = inst.components.rolelevel
+    local level = inst.components.rolelevel
     -- 没有等级，30%概率双倍采集
-    if zrolelevel == nil then
+    if level == nil then
         if math.random() < 0.3 then
             return 2
         else
@@ -54,23 +53,22 @@ local function calculatePickMulti(inst)
         end 
     end
 
-    local multi = 1
-    
-     -- 双倍采集，等级提升概率增加，初始20%，上限60%
-    if math.random(1, 250) <= math.min(150, zrolelevel.level + 50)  then
-        multi = 2
-    end
-    -- 三倍采集，5%概率
-    if math.random(1, 100) <= 5  then
-        multi = 3
-    end
-    -- 千分之一概率中奖，五倍采集
-    if math.random(1, 1000) <= 2 then
-        inst.components.talker:Say("我真是太走运了！")
-        multi = 5
-    end
+    -- 初始20%采集概率
+    -- 等级提升概率提高，双倍采集和三倍采集的概率提高
+    -- 双倍采集概率上限60%，三倍概率为双倍的1/10
+    local rd = math.random()
+    local range = math.min(math.max(level.level, 20)/100, 0.6)
 
-    return multi
+    if rd < 0.005 then
+        inst.components.talker:Say("太走运了！赶紧去买个彩票！")
+        return 10
+    elseif rd < range/10 then
+        inst.components.talker:Say("运气还不错...")
+        return 3
+    elseif rd < range then
+        return 2
+    else
+        return 1
 end
 
 local function morePick(inst)
