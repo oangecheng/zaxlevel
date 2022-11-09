@@ -65,10 +65,8 @@ local function calculatePickMulti(inst)
     elseif rd < range/10 then
         inst.components.talker:Say("运气还不错...")
         return 3
-    elseif rd < range then
-        return 2
-    else
-        return 1
+    elseif rd < range then return 2
+    else return 1 end
 end
 
 local function morePick(inst)
