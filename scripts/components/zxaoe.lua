@@ -1,4 +1,6 @@
 
+local AOE_ITEM = "bee_king_certificate"
+
 
 local EXCLUDE_TAG_DEFS = {
 	"INLIMBO",
@@ -35,15 +37,56 @@ end
 local function addAoe(inst)
 	local weapon = inst.components.weapon
 	if weapon == nil then return end
-	local oldonattack = weapon.onattack
 	weapon:SetOnAttack(aoeAttack)
+end
+
+
+
+-- 可交易
+local function itemTradeTest(inst, item, giver)
+    local aoe = inst.components.zxaoe
+    if not aoe.unlock then
+        if item.prefab == AOE_ITEM then
+            return true
+        end
+    end
+    return false
+end
+
+
+-- 给予物品
+local function itemGive(inst, giver, item)
+    local aoe = inst.components.zxaoe
+    if item.prefab == AOE_ITEM then
+        aoe.unlock = true
+        addAoe(inst)
+        giver.components.talker:Say("获得范围伤害能力！")
+    end
 end
 
 
 local ZxAoe = Class(function(self, inst)
     self.inst = inst
-    addAoe(inst)
+    self.unlock = false
+
+    inst.components.zxtrader:SetAbleToAcceptTest(itemTradeTest)
+    inst.components.zxtrader:SetOnAcceptItem(itemGive)
 end)
+
+
+function ZxAoe:OnSave()
+    return {
+        unlock = self.unlock,
+    }
+end
+
+
+function ZxAoe:OnLoad(data)
+    self.unlock = data.unlock or false
+    if self.unlock then
+        addAoe(self.inst)
+    end
+end
 
 
 return ZxAoe

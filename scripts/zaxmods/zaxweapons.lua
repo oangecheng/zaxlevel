@@ -10,6 +10,9 @@ local TRADDABLE_ITEM_DEFS = {
 	"tentaclespike",
 	"walrus_tusk",
 	"dragon_scales",
+	"largechop_certificate",
+	"largeminer_certificate",
+	"bee_king_certificate",
 }
 
 

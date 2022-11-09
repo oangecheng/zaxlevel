@@ -17,13 +17,13 @@ local ZxTrader  = Class(function(self, inst)
     local oldGiveFn = trader.onaccept
 
     trader:SetAbleToAcceptTest(function(inst, item, giver)
-        for i = 1, #testfnlist do
-            local fn = testfnlist[i]
-            if fn == nil or fn(inst, item, giver) then
+        for i = 1, #self.testfnlist do
+            local fn = self.testfnlist[i]
+            if fn ~= nil and fn(inst, item, giver) then
                 return true
             end
         end
-        if oldTradeTest == nil or oldTradeTest(inst, item, giver) then
+        if oldTradeTest ~= nil and oldTradeTest(inst, item, giver) then
             return true
         end
         return false
@@ -33,8 +33,8 @@ local ZxTrader  = Class(function(self, inst)
         if oldGiveFn ~= nil then
             oldGiveFn(inst, giver, item)
         end
-        for i = 1, #accpetfnlist do
-            local fn =  accpetfnlist[i]
+        for i = 1, #self.accpetfnlist do
+            local fn =  self.accpetfnlist[i]
             if fn ~= nil then 
                 fn(inst, giver, item)
             end
@@ -46,13 +46,13 @@ end)
 
 
 function ZxTrader:SetAbleToAcceptTest(fn)
-    table.insert(testfnlist, fn)
+    table.insert(self.testfnlist, fn)
 end
 
 
 function ZxTrader:SetOnAcceptItem(fn)
     if fn ~= nil then
-        table.insert(accpetfnlist, fn)
+        table.insert(self.accpetfnlist, fn)
     end
 end
 

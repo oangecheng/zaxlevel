@@ -77,11 +77,15 @@ end
 function ZxInsulator:GiveItem(inst, giver, item)
     local ins = inst.components.insulator
 
+    local str = nil
+
     if item.prefab == UNLOCK_ITEM_W then
+        str = "解锁保暖升级，使用冬日象鼻升级..."
         self.zxinsulatorunlock_w = true
     end
 
     if item.prefab == UPGRDADE_ITEM_W then
+        str = "保暖升级成功"
         self.zxinsulation_w = self.zxinsulation_w + 20
         if ins:IsType(SEASONS.WINTER) then
             ins:SetInsulation(self.zxinsulation_w)
@@ -89,15 +93,18 @@ function ZxInsulator:GiveItem(inst, giver, item)
     end
 
     if item.prefab == CHAGE_ITEM_W then
+        str = "切换到保暖模式"
         ins:SetInsulation(self.zxinsulation_w)
         ins:SetWinter()
     end
 
     if item.prefab == UNLOCK_ITEM_S then
+        str = "解锁隔热升级，使用夏日象鼻升级..."
         self.zxinsulatorunlock_s = true
     end
 
     if item.prefab == UPGRDADE_ITEM_S then
+        str = "隔热升级成功"
         self.zxinsulation_s = self.zxinsulation_s + 20
         if ins:IsType(SEASONS.SUMMER) then
             ins:SetInsulation(self.zxinsulation_s)
@@ -105,8 +112,13 @@ function ZxInsulator:GiveItem(inst, giver, item)
     end
 
     if item.prefab == CHAGE_ITEM_S then
+        str = "切换到隔热模式"
         ins:SetInsulation(self.zxinsulation_s)
         ins:SetSummer()
+    end
+
+    if str ~= nil then
+        giver.components.talker:Say(str)
     end
 end
 

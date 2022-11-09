@@ -16,7 +16,7 @@ if useMorePick then
 	modimport("scripts/zaxmods/zaxmorepick.lua")
 end
 
-if useSpearLevelUp then
+if useWeaponLevelUp then
 	modimport("scripts/zaxmods/zaxweapons.lua")
 end
 

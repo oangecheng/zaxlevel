@@ -21,8 +21,8 @@ end
 
 -- 耐久恢复
 local function recover(inst)
-    local finiteuses = self.inst.components.finiteuses
-    local zxfiniteuses = self.inst.components.zxfiniteuses
+    local finiteuses = inst.components.finiteuses
+    local zxfiniteuses = inst.components.zxfiniteuses
 	local percent = math.max(100/zxfiniteuses.max, 0.2)
 	percent = math.min(finiteuses:GetPercent() + percent, 1)
 	finiteuses:SetPercent(percent)
@@ -73,14 +73,14 @@ local function itemGive(inst, giver, item)
         local zxfiniteuses = inst.components.zxfiniteuses
         zxfiniteuses.max = math.min(zxfiniteuses.max + target[2], MAX_USES)
         giver.components.talker:Say("武器更耐用了！")
-        local finiteuses = self.inst.components.finiteuses
-        local percent = finiteuses.current / finiteuses.total
-		finiteuses:SetMaxUses(self.maxuses)
+        local finiteuses = inst.components.finiteuses
+        local percent = finiteuses:GetPercent()
+		finiteuses:SetMaxUses(zxfiniteuses.max)
 		finiteuses:SetPercent(percent)
     end
 
     if item.prefab == REPAIRE_ITEM then
-        onUseRecover(inst)
+        recover(inst)
     end
 end
 
@@ -100,14 +100,14 @@ end)
 
 
 
-function ZxSpeed:OnSave()
+function ZxFiniteuses:OnSave()
     return {
         max = self.max,
     }
 end
 
 
-function ZxSpeed:OnLoad(data)
+function ZxFiniteuses:OnLoad(data)
     self.max = data.max or 100
 	local finiteuses = self.inst.components.finiteuses
 	finiteuses:SetMaxUses(self.max)

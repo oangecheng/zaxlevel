@@ -1,5 +1,5 @@
-local Ch = locale == "zh" or locale == "zhr"
-
+local ch = locale == "zh" or locale == "zhr"
+ch = true
 
 -- 名称
 name = "Zax Level Up"
