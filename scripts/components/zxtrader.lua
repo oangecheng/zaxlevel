@@ -14,6 +14,7 @@ local ZxTrader  = Class(function(self, inst)
     local trader = inst.components.trader
     -- 如果之前有其他功能设置过可给予的功能，需要保存下
     local oldTradeTest = trader.abletoaccepttest
+    local oldGiveFn = trader.onaccept
 
     trader:SetAbleToAcceptTest(function(inst, item, giver)
         for i = 1, #testfnlist do
@@ -28,13 +29,18 @@ local ZxTrader  = Class(function(self, inst)
         return false
     end)
 
-    -- 使用event更安全
-    inst:ListenForEvent("trade", function(data)
+    trader.onaccept = function(inst, giver, item)
+        if oldGiveFn ~= nil then
+            oldGiveFn(inst, giver, item)
+        end
         for i = 1, #accpetfnlist do
             local fn =  accpetfnlist[i]
-            fn(inst, data.giver, data.item)
+            if fn ~= nil then 
+                fn(inst, giver, item)
+            end
         end
-    end)
+        giver.SoundEmitter:PlaySound("dontstarve/common/telebase_gemplace")
+    end
 
 end)
 

@@ -5,15 +5,7 @@ local MAX_CHOP_MULTI = 15
 local MAX_MINE_MULTI = 10
 
 
-local ZxWork = Class(function(self, inst)
-    self.inst = inst
-    self.chopmulti = 0
-    self.minemulti = 0
-    inst:AddComponent("tool")
-end)
-
-
-function ZxWork:AccpeptTest(item)
+local function itemTradeTest(inst, item, giver)
     local prefab = item.prefab
     if prefab == CHOP_ITEM and self.chopmulti < MAX_CHOP_MULTI then
         return true
@@ -25,18 +17,31 @@ function ZxWork:AccpeptTest(item)
 end
 
 
-function ZxWork:GiveItem(giver, item)
+local function itemGive(inst, giver, item)
     local prefab = item.prefab
+    local zxwork = inst.components.zxwork
     if prefab == CHOP_ITEM then
-        self.chopmulti = math.max(self.chopmulti + 5, MAX_CHOP_MULTI)
-        self.inst.components.tool:SetAction(ACTIONS.CHOP, self.chopmulti)
-        giver.components.talker:Say("伐木效率提升！")
+        local str = (zxwork.chopmulti == 0) and "可以使用武器进行伐木了！" or "伐木效率提升！"
+        giver.components.talker:Say(str)
+        zxwork.chopmulti = math.max(zxwork.chopmulti + 5, MAX_CHOP_MULTI)
+        zxwork.inst.components.tool:SetAction(ACTIONS.CHOP, zxwork.chopmulti)
     elseif prefab == MINE_ITEM then
-        self.minemulti = math.max(self.minemulti + 3, MAX_MINE_MULTI)
-        self.inst.components.tool:SetAction(ACTIONS.MINE, self.minemulti)
-        giver.components.talker:Say("挖矿效率提升！")
+        local str = (zxwork.minemulti == 0) and "可以使用武器进行挖矿了！" or "挖矿效率提升！"
+        giver.components.talker:Say(str)
+        zxwork.minemulti = math.max(zxwork.minemulti + 3, MAX_MINE_MULTI)
+        zxwork.inst.components.tool:SetAction(ACTIONS.MINE, zxwork.minemulti)
     end
 end
+
+
+local ZxWork = Class(function(self, inst)
+    self.inst = inst
+    self.chopmulti = 0
+    self.minemulti = 0
+    inst:AddComponent("tool")
+    inst.components.zxtrader:SetAbleToAcceptTest(itemTradeTest)
+    inst.components.zxtrader:SetOnAcceptItem(itemGive)
+end)
 
 
 function ZxWork:OnSave()
