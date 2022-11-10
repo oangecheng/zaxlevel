@@ -10,6 +10,7 @@ local useMoreDrop = GetModConfigData('UseMoreDrop')
 local useRoleStrenth = GetModConfigData('UseRoleStrenth')
 local useWeaponLevelUp = GetModConfigData('UseWeaponLevelUp')
 local useHatslLevelUp = GetModConfigData('UseHatslLevelUp')
+local useFarmLevelUp = GetModConfigData('UseFarmLevelUp')
 
 
 if useMorePick then
@@ -22,6 +23,10 @@ end
 
 if useHatslLevelUp then
 	modimport("scripts/zaxmods/zaxhats.lua")
+end
+
+if useFarmLevelUp then
+	modimport("scripts/zaxmods/zaxfarm.lua")
 end
 
 
@@ -39,6 +44,10 @@ local function initPalyer(inst)
 	-- 角色强化
 	if useRoleStrenth then
 		inst:AddComponent("rolestrenth")
+	end
+
+	if useFarmLevelUp then
+		inst:AddComponent("zxfarmskill")
 	end
 
 	inst.components.talker:Say("我又来到这个奇怪的世界！")	

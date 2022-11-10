@@ -1,6 +1,6 @@
 
 为了增加游戏的后期成长性，因此制作了这个mod
-(mod还在开发迭代中，很多细节还有待优化，欢迎大家提意见)
+(mod还在开发迭代中，很多细节还有待优化，欢迎大家提意见，目前游戏没做双语，后面再支持)
 
 角色升级
 1. 开启角色升级，所有角色的三维会被重置为 100 100 100
@@ -11,6 +11,13 @@
 1. 击杀4000点血量以上的敌人，可以获得角色能力强化
 2. 每次强化角色伤害+1%，防御+1%
 3. 伤害强化上限50%，防御强化上限30%
+
+
+种田能力提升(种菜是刻在骨子里的基因，游戏里面也一样，哈哈哈...)
+1. 通过收获巨大作物提升自己的农业能力
+2. 等级越高，升级需要收获的大作物数量就越多，1级需要1个，2级2个，3级3个，以此类推
+3. 目前仅支持肥料使用效率提升，每20级提升肥料效率一倍，肥力上限100
+4. 后面还会有其他扩展，敬请期待...
 
 
 额外采集
@@ -55,8 +62,10 @@
 
 
 
-In order to increase the later growth of the game, this mod was created
+In order to increase the later growth of the game, this mod was created.
+This mod does not support English at the moment, it will be supported later.
 (The mod is still under development and iteration, and many details have yet to be optimized. Comments are welcome)
+(My English is not very good, please bear with me if there is a problem with the translation)
 
 Role upgrade
 1. Turn on character upgrade, all character attributes will be reset to 100 100 100.
@@ -67,6 +76,14 @@ Role reinforcement
 1. Kill enemies with more than 4000 HP to get character ability enhancement
 2. Each time the character is strengthened, the damage +1%, the defense +1%
 3. The upper limit of damage enhancement is 50%, and the upper limit of defense enhancement is 30%
+
+
+Farming ability improvement
+1. Improve your farming abilities by harvest giant crops
+2. The higher the level, the more large crops need to be harvested for the upgrade, 1 for level 1, 2 for level 2, 3 for level 3, and so on
+3. At present, only the improvement of fertilizer use efficiency is supported, and the fertilizer efficiency is doubled every 20 levels, and the upper limit of fertility is 100
+4. There will be other extensions later, so stay tuned
+
 
 Additional pick
 1. When the character upgrade function is not enabled, an additional 30% chance of being collected will be doubled, and there are no other pick rules.

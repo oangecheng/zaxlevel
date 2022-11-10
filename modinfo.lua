@@ -1,5 +1,6 @@
 local ch = locale == "zh" or locale == "zhr"
-ch = true
+
+local VERSION = "0.2.7"
 
 -- 名称
 name = "Zax Level Up"
@@ -7,10 +8,11 @@ name = "Zax Level Up"
 description = 
 ch and 
 [[
-V 0.2.6
+V 0.2.7
 你可以升级你的角色和物品，
 可以通过战斗击杀对方获得经验，
 可以吃下美味的食物获取经验，
+可以通过种植巨大作物提升自己的种田能力，
 可以通过给予物品升级女武神的长矛和普通长矛，
 可以通过给予物品升级海象帽，
 以上选项都可以通过设置自行选择开启还是关闭
@@ -18,10 +20,11 @@ V 0.2.6
 ]]
 or 
 [[
-V 0.2.6
+V 0.2.7
 You can upgrade your characters and items.
 You can gain experience by killing opponents in battle.
 You can eat delicious food to gain experience.
+You can improve your farming ability by planting huge crops
 Wathgrithr spears and normal spears can be upgraded by giving items.
 Walrushat can be upgraded by giving items.
 All of the above options can be turned on or off through the settings.
@@ -96,6 +99,16 @@ configuration_options =
 	{
 		name = "UseHatslLevelUp",
 		label = ch and "帽子可升级" or "upgrade hats" ,
+		options = {
+			{description = ch and "开启" or "enable", data = true},
+			{description = ch and "关闭" or "disable", data = false},
+		},
+		default = true,
+	},
+
+	{
+		name = "UseFarmLevelUp",
+		label = ch and "种地能力提升" or "upgrade farm skill" ,
 		options = {
 			{description = ch and "开启" or "enable", data = true},
 			{description = ch and "关闭" or "disable", data = false},
