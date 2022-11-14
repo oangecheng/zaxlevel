@@ -49,3 +49,52 @@
 
 其他
 1. 帽子强化可以通过设置选项“概率升级”，开启之后升级帽子属性有一定概率失败，属性越高，失败的几率越大(这里的策略还需要细化，目前写的比较粗糙)
+
+
+
+
+
+
+In order to increase the later growth of the game, this mod was created
+(The mod is still under development and iteration, and many details have yet to be optimized. Comments are welcome)
+
+Role upgrade
+1. Turn on character upgrade, all character attributes will be reset to 100 100 100.
+2. Through combat upgrades, kill or destroy the opponent (also the spider nest) to gain the experience of the opponent's maximum HP, and only one level up at a time.
+3. Eat certain kinds of meat food to upgrade, what kind of food is, experience it in the game (there will be a prompt when you gain experience)
+
+Role reinforcement
+1. Kill enemies with more than 4000 HP to get character ability enhancement
+2. Each time the character is strengthened, the damage +1%, the defense +1%
+3. The upper limit of damage enhancement is 50%, and the upper limit of defense enhancement is 30%
+
+Additional pick
+1. When the character upgrade function is not enabled, an additional 30% chance of being collected will be doubled, and there are no other pick rules.
+2. When character upgrade is enabled, the higher the character level, the higher the probability of double pick, the initial 20%, the maximum 60%
+3. The probability of triple pick is 1/10 of double pick
+4. 0.5% chance to trigger lucky event, 10 times pick
+
+Additional drop
+1. Killing enemies with HP of 1000 and above can increase the probability of additional drops
+2. Double the initial drop probability of 30%, maximum 50%
+3. Triple drop chance is 1/10 of double drop
+
+Weapon Enhancement
+1. You can use items to increase the attack power, maximum number of uses, and movement speed of the weapon
+2. If the durability is 0, it will not disappear, and the attack power will be reduced to 0. Use a gold nugget to restore the durability, and each recovery will be 20% or 100 times of durability (whichever is the maximum value)
+3. Because the weapon attack power is very abnormal, a very expensive strategy is adopted here, ruins_bat +0.5, tentaclespike +0.02, and the maximum attack power is 80
+4. The initial movement speed bonus of the weapon is fixed at 10%. You can use walrus tusks to increase the movement speed, +1% each time, and the maximum movement speed is 50%.
+5. Use dragon fly scales to increase the maximum number of uses, each time increases by 100, and the maximum number of uses is 2000
+6. Linked with Functional Medal (I prefer to play this mod), giving Advanced Logging Medal and Advanced Miner Medal can make the weapon capable of mining and tree cutting, and giving a few more can improve the corresponding ability
+7. Currently support spear, spear_wathgrithr for strengthening
+
+Hat Reinforcement
+1. You can use items to improve hat attributes, waterproof, warm, and spiritual recovery
+2. You need to use the eyeball to unlock the waterproof upgrade ability. Use pig skin to improve waterproof, each pig skin +1%, the upper limit is 100%,
+3. You need to use the bear skin to unlock the warm pgrade ability, you can use the winter elephant trunk to improve the warmth, +20 each time, no upper limit,
+4. You need to use the sand stone to unlock the upgrade the heat insulation ability, you can use the summer elephant trunk to improve the heat insulation, +20 each time, no upper limit,
+5. By using red_gem ​​and blue_gem to switch hat form, use red_gem ​​to switch to heat insulation mode, and blue_gem to switch to warm mode,
+   You need to unlock the upgrade ability in the corresponding mode to switch to the corresponding mode. After switching carefully, you cannot switch back.
+6. You need to use the shadow heart to unlock the spiritual recovery upgrade ability, you can use the walrus hat to upgrade, the spirit recovery +1 each time,
+7. Reminder: The hat will disappear after the durability is 0, remember to repair it
+8. Currently only supports walrus hat enhancement
