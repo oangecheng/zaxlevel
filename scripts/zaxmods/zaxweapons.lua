@@ -40,7 +40,7 @@ local function initWeapon(inst)
 	inst:AddComponent("zxspeed")
 	inst:AddComponent("zxfiniteuses")
 	inst:AddComponent("zxaoe")
-	init:AddComponent("zxdamage")
+	inst:AddComponent("zxdamage")
 end
 
 
