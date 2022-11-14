@@ -7,7 +7,7 @@ name = "Zax Level Up"
 description = 
 ch and 
 [[
-V 0.2.2
+V 0.2.5
 你可以升级你的角色和物品，
 可以通过战斗击杀对方获得经验，
 可以吃下美味的食物获取经验，
@@ -18,7 +18,7 @@ V 0.2.2
 ]]
 or 
 [[
-V 0.0.2
+V 0.2.5
 You can upgrade your characters and items.
 You can gain experience by killing opponents in battle.
 You can eat delicious food to gain experience.
@@ -30,7 +30,7 @@ Reminder: mod characters may not be compatible with their own upgrades!
 
 
 author = "Zax"
-version = "0.2.2"
+version = "0.2.5"
 forumthread = ""
 icon_atlas = "modicon.xml"
 icon = "modicon.tex"
