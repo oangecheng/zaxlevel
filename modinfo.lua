@@ -33,7 +33,7 @@ Reminder: mod characters may not be compatible with their own upgrades!
 
 
 author = "Zax"
-version = "0.2.6"
+version = VERSION
 forumthread = ""
 icon_atlas = "modicon.xml"
 icon = "modicon.tex"
