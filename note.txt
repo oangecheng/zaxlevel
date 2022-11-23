@@ -1,3 +1,10 @@
+V0.2.8 更新 
+武器强化策略调整（攻击力上限提升至100）
+1. 攻击力51之前，一个铥矿棒+4，一个触手尖刺+2 例如战斗长矛升级到51，需要3个铥矿棒
+2. 攻击力68之前，一个铥矿棒+2，一个触手尖刺+1
+3. 攻击力80之前，一个铥矿棒+1，一个触手尖刺+0.5
+4. 攻击力100之前，一个铥矿棒+0.4， 一个触手尖刺+0.2 (长期档可以尝试下)
+
 
 为了增加游戏的后期成长性，因此制作了这个mod
 (mod还在开发迭代中，很多细节还有待优化，欢迎大家提意见，目前游戏没做双语，后面再支持)
@@ -60,6 +67,11 @@
 
 
 
+V0.2.8 Weapon strengthening strategy adjustment (damage limit increased to 100)
+1. Before the damage is 51, a ruins_bat +4, a tentaclespike +2. For example, to upgrade the spear_wathgrithr to 51, you need 3 ruins_bats
+2. Before the damage is 68, a ruins_bat +2, a tentaclespike +1
+3. Before the damage is 80, a ruins_bat +1, a tentaclespike +0.5
+4. Before the damage is 100, a ruins_bat +0.4, a tentaclespike +0.2
 
 
 In order to increase the later growth of the game, this mod was created.
