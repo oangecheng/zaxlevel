@@ -67,11 +67,11 @@ local function itemGive(inst, giver, item)
         local policy = nil
 
         
-        if zxdamage < DAMAGE_NORMAL[1] then
+        if zxdamage.damage < DAMAGE_NORMAL[1] then
             policy = DAMAGE_NORMAL
-        elseif zxdamage < DAMAGE_SENIOR[1] then
+        elseif zxdamage.damage < DAMAGE_SENIOR[1] then
             policy = DAMAGE_SENIOR
-        elseif zxdamage < DAMAGE_HIGH[1] then
+        elseif zxdamage.damage < DAMAGE_HIGH[1] then
             policy = DAMAGE_HIGH
         else 
             policy = DAMAGE_SUPER

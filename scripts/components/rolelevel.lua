@@ -6,15 +6,25 @@
 
 -- 可获得经验的食物定义
 local FOOD_DEFS = {
-    {"moqueca", 3000}, -- 海鲜杂烩
-    {"lobsterdinner", 3000}, --龙虾正餐
+
+    {"mandrake", 10000}, -- 曼德拉料理(够奢侈)
+
+    {"bonesoup", 5000}, -- 骨头汤
+    {"lobsterdinner", 5000}, --龙虾正餐
+    {"lobsterbisque", 3000}, --龙虾汤
+
     {"surfnturf", 2000}, -- 海鲜牛排
-    {"honeyham", 2000}, -- 蜜汁火腿
     {"turkeydinner", 2000}, -- 火鸡正餐
-    {"bonestew", 1000}, -- 大肉汤
-    {"meat_dried", 500}, -- 风干肉
-    {"fish", 500}, -- 包含鱼的食物
-    {"eel", 300}, -- 鳗鱼
+    {"moqueca", 2000}, --海鲜杂烩
+    {"seafoodgumbo", 2000}, -- 海鲜浓汤
+
+    {"honeyham", 1000}, --蜜汁火腿
+    {"butter", 1000}, -- 黄油
+    {"royal_jelly", 1000}, -- 蜂王浆 
+
+    {"meat_dried", 200}, -- 风干肉
+    {"fish", 200}, -- 包含鱼的食物
+    {"eel", 500}, -- 鳗鱼
 }
 
 
