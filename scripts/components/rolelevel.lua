@@ -19,7 +19,6 @@ local FOOD_DEFS = {
     {"seafoodgumbo", 2000}, -- 海鲜浓汤
 
     {"honeyham", 1000}, --蜜汁火腿
-    {"butter", 1000}, -- 黄油
     {"royal_jelly", 1000}, -- 蜂王浆 
 
     {"meat_dried", 200}, -- 风干肉
