@@ -128,7 +128,7 @@ end
 
 function ZxDamage:OnLoad(data)
     self.damage = data.damage or 30
-    self.unlock = data.unlock or true
+    self.unlock = data.unlock
     updateDamage(self)
 end
 

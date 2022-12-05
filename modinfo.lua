@@ -1,6 +1,6 @@
 local ch = locale == "zh" or locale == "zhr"
 
-local VERSION = "0.2.9"
+local VERSION = "0.2.91"
 
 -- 名称
 name = "Zax Level Up"
@@ -8,7 +8,7 @@ name = "Zax Level Up"
 description = 
 ch and 
 [[
-V 0.2.9
+V 0.2.91
 你可以升级你的角色和物品，
 可以通过战斗击杀对方获得经验，
 可以吃下美味的食物获取经验，
@@ -20,7 +20,7 @@ V 0.2.9
 ]]
 or 
 [[
-V 0.2.9
+V 0.2.91
 You can upgrade your characters and items.
 You can gain experience by killing opponents in battle.
 You can eat delicious food to gain experience.

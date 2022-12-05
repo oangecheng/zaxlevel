@@ -94,6 +94,7 @@ function ZxInsulator:GiveItem(inst, giver, item)
 
     if item.prefab == CHAGE_ITEM_W then
         str = "切换到保暖模式"
+        self.zxiswinter = true
         ins:SetInsulation(self.zxinsulation_w)
         ins:SetWinter()
     end
@@ -113,6 +114,7 @@ function ZxInsulator:GiveItem(inst, giver, item)
 
     if item.prefab == CHAGE_ITEM_S then
         str = "切换到隔热模式"
+        self.zxiswinter = false
         ins:SetInsulation(self.zxinsulation_s)
         ins:SetSummer()
     end
@@ -139,10 +141,10 @@ end
 
 function ZxInsulator:OnLoad(data)
     self.zxinsulation_w = data.zxinsulation_w or 0
-    self.zxinsulatorunlock_w = data.zxinsulatorunlock_w or false
+    self.zxinsulatorunlock_w = data.zxinsulatorunlock_w
     self.zxinsulation_s = data.zxinsulation_s or 0
-    self.zxinsulatorunlock_s = data.zxinsulatorunlock_s or false
-    self.zxiswinter = data.zxiswinter or true
+    self.zxinsulatorunlock_s = data.zxinsulatorunlock_s
+    self.zxiswinter = data.zxiswinter
 
     local insulator = self.inst.components.insulator
     if self.zxiswinter and self.zxinsulatorunlock_w then

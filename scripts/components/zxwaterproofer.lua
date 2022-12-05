@@ -65,6 +65,7 @@ function ZxWaterProofer:OnSave()
         waterproofer = self.waterproofer,
         waterprooferunlock = self.waterprooferunlock,
     }
+    return data
 end
 
 
