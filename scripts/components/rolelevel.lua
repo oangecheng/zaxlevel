@@ -7,11 +7,13 @@
 -- 可获得经验的食物定义
 local FOOD_DEFS = {
 
-    {"mandrake", 10000}, -- 曼德拉料理(够奢侈)
+    {"mandrakesoup", 10000}, -- 曼德拉汤(够奢侈)
+    {"cookedmandrake", 10000}, -- 烤曼德拉
 
     {"bonesoup", 5000}, -- 骨头汤
     {"lobsterdinner", 5000}, --龙虾正餐
     {"lobsterbisque", 3000}, --龙虾汤
+    {"talleggs", 3000}, -- 苏格兰高脚鸟蛋
 
     {"surfnturf", 2000}, -- 海鲜牛排
     {"turkeydinner", 2000}, -- 火鸡正餐
