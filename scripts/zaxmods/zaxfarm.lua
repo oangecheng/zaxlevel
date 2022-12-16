@@ -71,10 +71,13 @@ local function hookOnDeploy(deployable)
     function deployable:Deploy(pt, deployer, rot)
         local inst = self.inst
         local fertilizer = inst.components.fertilizer
-        local ret = tryModifyNutrients(fertilizer, deployer)
-        deployable:OldDeploy(pt, deployer, rot)
+        local nutrients = tryModifyNutrients(fertilizer, deployer)
+        local ret = deployable:OldDeploy(pt, deployer, rot)
+        if nutrients then
+            inst.components.fertilizer.nutrients = nutrients
+        end
         if ret then
-            inst.components.fertilizer.nutrients = ret
+            return ret
         end
     end
 end
